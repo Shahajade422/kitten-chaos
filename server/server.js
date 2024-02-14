@@ -8,12 +8,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: ["http://localhost:3000/"],
-//     methods: ["GET", "POST", "PUT"],
-//   })
-// );
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
