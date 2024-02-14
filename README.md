@@ -64,7 +64,7 @@ Contributions to Kitten Chaos are welcome! If you have suggestions for new featu
 
 ### Contact
 
-For any inquiries or feedback, please contact us at [shahajade.student.cer20@gmail.com](shahajade.student.cer20@gmail.com).
+For any inquiries or feedback, please contact us at [shahajade.student.cer20@gmail.com].
 
 ---
 
