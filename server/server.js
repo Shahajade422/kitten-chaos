@@ -8,12 +8,25 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:3000/"],
-    methods: ["GET", "POST", "PUT"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000/"],
+//     methods: ["GET", "POST", "PUT"],
+//   })
+// );
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  next();
+});
 
 mongoose.connect(URL);
 
