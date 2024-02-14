@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function StartGame() {
   const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -19,6 +20,7 @@ function StartGame() {
           "Username must contain at least one non-numeric character."
         );
       } else {
+        setIsLoading(true);
         axios
           .post("https://kitten-chaos.vercel.app/api/users", { username })
           .then((response) => {
@@ -29,6 +31,9 @@ function StartGame() {
           })
           .catch((error) => {
             console.error(error);
+          })
+          .finally(() => {
+            setIsLoading(false);
           });
       }
     } else {
@@ -48,7 +53,7 @@ function StartGame() {
         className="username-input"
       />
       <button onClick={handleStartGame} className="start-game-button">
-        Start Game
+        {isLoading ? <div className="loader"></div> : "Start Game"}
       </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
