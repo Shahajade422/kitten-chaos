@@ -14,6 +14,9 @@ mongoose.connect(URL);
 
 require("./models/UserModel");
 
+app.get("/", (req, res) => {
+  res.send("Working");
+});
 app.use("/api/users", require("./routes/user"));
 app.use("/api/users", require("./routes/score"));
 app.use("/api", require("./routes/leaderboard"));
@@ -21,3 +24,5 @@ app.use("/api", require("./routes/leaderboard"));
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
