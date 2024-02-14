@@ -5,7 +5,7 @@ const User = mongoose.model("USER");
 
 router.get("/leaderboard", async (req, res) => {
   try {
-    const leaderboardData = await User.find().sort({ score: -1 }).limit(15);
+    const leaderboardData = await User.find().sort({ score: -1 }).limit(100);
     res.json(leaderboardData);
   } catch (error) {
     console.error("Error fetching leaderboard data:", error);
