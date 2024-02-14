@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://kitten-chaos.vercel.app/"],
+    origin: ["http://localhost:3000/"],
     methods: ["GET", "POST", "PUT"],
   })
 );
