@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import CardList from "./components/CardList.js";
+import Leaderboard from "./components/Leaderboard.js";
+import StartGame from "./components/StartGame.js";
+import axios from "axios";
+import "./App.css";
+import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+
+  const handleWin = async () => {
+    try {
+      const username = localStorage.getItem("userName");
+
+      const response = await axios.post(
+        "http://localhost:5000/api/users/score",
+        { username }
+      );
+      const { score } = response.data;
+
+      const updatedScore = score + 1;
+
+      await axios.put("http://localhost:5000/api/users/updateScore", {
+        username,
+        score: updatedScore,
+      });
+      setMessage("Won");
+      navigate("/leaderboard");
+    } catch (error) {
+      console.error("Error handling win:", error);
+    }
+  };
+
+  const handleLose = () => {
+    setMessage("Lose");
+    navigate("/leaderboard");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<StartGame></StartGame>}></Route>
+        <Route
+          path="/Card"
+          element={<CardList onWin={handleWin} onLose={handleLose} />}
+        />
+        <Route path="/leaderboard" element={<Leaderboard data={message} />} />
+      </Routes>
     </div>
   );
 }

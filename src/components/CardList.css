@@ -1,0 +1,24 @@
+.game-title {
+  font-size: 4rem;
+  text-align: center;
+  font-weight: 500;
+  font-family: cursive;
+  color: blueviolet;
+  padding: 25px;
+}
+
+.defuce-card {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: cursive;
+  color: #473f7d;
+  padding-bottom: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
