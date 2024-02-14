@@ -15,14 +15,14 @@ function App() {
       const username = localStorage.getItem("userName");
 
       const response = await axios.post(
-        "http://localhost:5000/api/users/score",
+        "https://kitten-chaos.vercel.app/api/users/score",
         { username }
       );
       const { score } = response.data;
 
       const updatedScore = score + 1;
 
-      await axios.put("http://localhost:5000/api/users/updateScore", {
+      await axios.put("https://kitten-chaos.vercel.app/api/users/updateScore", {
         username,
         score: updatedScore,
       });

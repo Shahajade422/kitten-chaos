@@ -20,7 +20,7 @@ function StartGame() {
         );
       } else {
         axios
-          .post("http://localhost:5000/api/users", { username })
+          .post("https://kitten-chaos.vercel.app/api/users", { username })
           .then((response) => {
             localStorage.removeItem("savedCards");
             localStorage.removeItem("savedNum");

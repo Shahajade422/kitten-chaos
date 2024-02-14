@@ -17,7 +17,9 @@ function Leaderboard({ data }) {
 
   const fetchLeaderboardData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/leaderboard");
+      const response = await axios.get(
+        "https://kitten-chaos.vercel.app/api/leaderboard"
+      );
       setLeaderboardData(response.data);
     } catch (error) {
       console.error("Error fetching leaderboard data:", error);
